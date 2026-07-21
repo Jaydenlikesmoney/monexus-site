@@ -2330,6 +2330,9 @@ img, svg, video, canvas{ max-width:100%; height:auto; }
    PARENT's ~16px font, i.e. ~560px — which is why a 33.6px h2 was breaking after ~20 chars. */
 #problem .sec-head{max-width:none;}
 #problem .dek{max-width:none;}
+/* Research & IP: its own area on the Partners tab, same full-width text treatment. */
+#research-ip .sec-head{max-width:none;margin-bottom:0;}
+#research-ip .dek{max-width:none;}
 /* No font-size override here: the headline was shortened instead ("Today's" dropped), so it
    measures 1008px against 1100px of inner width and fits on one line at the full 3.25rem/52px,
    matching every other section heading. Keep ~90px of slack if this copy is ever re-edited. */
