@@ -2447,6 +2447,28 @@ img, svg, video, canvas{ max-width:100%; height:auto; }
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{
   outline:2px solid var(--accent-deep);outline-offset:2px;border-radius:4px;
 }
+/* ---- mobile legibility floor for micro-labels -------------------------------------------
+   These are declared in fixed rem/px (.58–.68rem) rather than vw, so they render at the same
+   9.3–10.9px on a phone as on a desktop — too small to read comfortably on a handset, and they
+   carry real meaning (they are how a reader sees that PerioMag is at "Preclinical").
+   Raised to 11px below the site's existing 720px mobile boundary.
+   Safe by construction: every original is a FIXED value under 11px, so this can only ever
+   increase a size — there is no width at which it would shrink one.
+   !important because several of these are set from component CSS with higher specificity.
+   Deliberately NOT included: <text> inside the partner-logo SVGs (computes to 8px). That scales
+   with the SVG viewBox, so overriding it would break the logo artwork rather than help. */
+@media (max-width:719px){
+  .plf__glabel,
+  .pl__legend, .pl__legend span, .pl__legend-stages,
+  .pl__phase,
+  .pl__stagelabels, .pl__stagelabels span, .pl__sl, .pl__sl--cur,
+  .pl__sci-h,
+  .pl__mk,
+  .pl__key-title,
+  .gloss-pop__term,
+  .mx-et-chip,
+  .footer-col__head{font-size:11px!important;}
+}
 /* print: flatten the sticky translucent nav, hide chrome, avoid gradient/shadow bleed */
 @media print{
   .nav{position:static;background:none!important;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;border-bottom:1px solid var(--line);}
