@@ -1488,8 +1488,9 @@ a.card:hover {
   box-shadow:var(--shadow-1);padding:clamp(20px,3vw,40px);}
 #mx-duration .mxdur-h{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;
   font-size:clamp(1.35rem,2.6vw,2rem);color:var(--ink);margin:0;}
+/* no max-width: the dek uses the full card width rather than a narrow measure (per request) */
 #mx-duration .mxdur-dek{color:var(--muted);font-size:clamp(.95rem,1.5vw,1.05rem);line-height:1.55;
-  max-width:58ch;margin:.6rem 0 0;}
+  margin:.6rem 0 0;}
 #mx-duration .mxdur-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.6rem;}
 #mx-duration .mxdur-t{min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:999px;
   background:transparent;color:var(--muted);font:inherit;font-size:.85rem;font-weight:700;
