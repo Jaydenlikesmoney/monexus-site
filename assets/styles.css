@@ -1231,6 +1231,33 @@ a.card:hover {
     opacity:1; transform:none; transition:none;
   }
 }
+/* ---- one-platform -> many-diseases branching tree -------------------------------
+   Structure only: every label stays in HTML so it is selectable, translatable and
+   sized in real px. preserveAspectRatio=none lets the tree stretch to the exact
+   width of the 4-column chip grid; non-scaling-stroke keeps the line weight even.
+   Hidden below 720px, where the chips wrap and a fixed 4-branch geometry can't align. */
+#mx-frontierkit .fk-tree{display:none;}
+#mx-frontierkit .fk-tree path{
+  fill:none; stroke:color-mix(in srgb, var(--accent) 55%, var(--line));
+  stroke-width:1.6; stroke-linecap:round; vector-effect:non-scaling-stroke;
+}
+@media(min-width:720px){
+  #mx-frontierkit .fk-tree{display:block; width:100%; height:84px; margin:-2px 0;}
+  #mx-frontierkit .fk-chips{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:10px; width:100%;
+  }
+  #mx-frontierkit .fk-chip{justify-content:center; min-width:0;}
+}
+/* draw the branches in on reveal — mirrors the chips' own .fk-reveal/.fk-in pattern,
+   so with no JS (no .fk-reveal class) the tree simply renders complete. */
+#mx-frontierkit.fk-reveal .fk-tree path{
+  stroke-dasharray:780; stroke-dashoffset:780; transition:stroke-dashoffset .95s ease;
+}
+#mx-frontierkit.fk-reveal.fk-in .fk-tree path{stroke-dashoffset:0;}
+@media (prefers-reduced-motion: reduce){
+  #mx-frontierkit.fk-reveal .fk-tree path{stroke-dashoffset:0; transition:none;}
+}
+
 /* f:mx-evidence-timeline */
 #mx-evidence-timeline{
   --paper:#FFFFFF; --surface:#FFFFFF; --surface-2:#F1F6F3;
