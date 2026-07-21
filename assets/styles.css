@@ -2325,6 +2325,15 @@ img, svg, video, canvas{ max-width:100%; height:auto; }
    Wraps normally on narrow screens (no nowrap, so no mobile overflow). */
 #platform-moat .sec-head{max-width:none;}
 #platform-moat .dek{max-width:none;}
+/* Problem section: same treatment (per request). Note .sec-head's 70ch resolves against the
+   PARENT's ~16px font, i.e. ~560px — which is why a 33.6px h2 was breaking after ~20 chars. */
+#problem .sec-head{max-width:none;}
+#problem .dek{max-width:none;}
+/* Lifting the caps alone still left the h2 on 2 lines: at 52px this headline needs 1186px and
+   the 1180px container only offers 1100px of inner width. Trimming the top of the clamp to
+   2.95rem (47.2px) brings it to ~1077px so it lands on one line. The lower bound is untouched,
+   so it still scales down and wraps normally on narrow screens. */
+#problem .sec-head h2{font-size:clamp(2rem, 4.2vw, 2.95rem);}
 /* Tap-to-zoom lightbox for schematic figures (primarily for reading dense infographics on mobile). */
 .figure img{cursor:zoom-in;}
 #__zoom{position:fixed;inset:0;z-index:2147482000;background:rgba(8,16,13,.95);display:none;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
