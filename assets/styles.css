@@ -284,7 +284,9 @@ samp {
   color: var(--muted);
   font-weight: 380;
   text-wrap: pretty;
-  max-width: 54ch;
+  /* No max-width: deks run to the container width (lifted globally on request).
+     `.hero .dek` keeps its own 60ch cap, and `.chapter__dek` its own — both are more
+     specific, so the hero and the product deep-dives are unaffected. */
 }
 
 .dek {
@@ -895,7 +897,7 @@ a.card:hover {
 .tabpanel.is-active{display:block;}
 .hero__cta{display:flex;gap:14px;flex-wrap:wrap;}
 .hero__stats{display:grid;gap:1rem;}
-.sec-head{max-width:70ch;}
+/* .sec-head max-width lifted globally — see frontier.css */
 .bl-list{list-style:none;padding:0;margin:0;display:grid;gap:.9rem;}
 .bl{display:grid;gap:.15rem;padding-left:1.2rem;position:relative;}
 .bl::before{content:"";position:absolute;left:0;top:.5em;width:.55rem;height:.55rem;border-radius:3px;background:var(--accent);}
@@ -1912,7 +1914,9 @@ h3{
   border:0;
   padding:0;
   margin-bottom:clamp(28px, 4vw, 52px);
-  max-width:70ch;
+  /* max-width removed (lifted globally on request). The old 70ch resolved against the PARENT's
+     ~17px font, not the h2's, so it capped at ~666px regardless of heading size — which is why
+     large headlines broke after ~20 characters. */
 }
 
 /* CHAPTERS — big soft accent numeral */
@@ -2370,22 +2374,10 @@ img, svg, video, canvas{ max-width:100%; height:auto; }
 .investor-item--market .investor-item__label{font-size:.95rem;margin-bottom:12px;}
 .investor-item--market .investor-item__text{font-size:1.3rem;line-height:1.5;}
 .investor-item--market .investor-item__sources{font-size:.8rem;}
-/* Platform section: let the dek use the full content width so it reads on one line (per request).
-   Two caps forced the wrap — .sec-head (70ch) and the dek's own 54ch — so lift both here.
-   Wraps normally on narrow screens (no nowrap, so no mobile overflow). */
-#platform-moat .sec-head{max-width:none;}
-#platform-moat .dek{max-width:none;}
-/* Problem section: same treatment (per request). Note .sec-head's 70ch resolves against the
-   PARENT's ~16px font, i.e. ~560px — which is why a 33.6px h2 was breaking after ~20 chars. */
-#problem .sec-head{max-width:none;}
-#problem .dek{max-width:none;}
-/* Research & IP: its own area on the Partners tab, same full-width text treatment. */
-#research-ip .sec-head{max-width:none;margin-bottom:0;}
-#research-ip .dek{max-width:none;}
-/* Investors: same treatment. The dek needed 685px and .sec-head's 70ch cap gave it 666px, so it
-   was breaking to two lines with 19px to spare — the container offers ~1100px. */
-#investors-sec .sec-head{max-width:none;}
-#investors-sec .dek{max-width:none;}
+/* The four per-section max-width:none overrides that used to live here (#platform-moat, #problem,
+   #research-ip, #investors-sec) are gone: the caps are now lifted globally at source, so they
+   were all no-ops. Only the Research & IP margin tweak still has an effect. */
+#research-ip .sec-head{margin-bottom:0;}
 /* No font-size override here: the headline was shortened instead ("Today's" dropped), so it
    measures 1008px against 1100px of inner width and fits on one line at the full 3.25rem/52px,
    matching every other section heading. Keep ~90px of slack if this copy is ever re-edited. */
