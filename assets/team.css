@@ -1,0 +1,19 @@
+/* ============================================================================
+   TEAM PHOTO FRAMING  —  generated from team_frame.json by the crop tool.
+   Easiest way to change these: open team-photo-cropper.html, drag/zoom each
+   photo, then send the exported values back and they'll be re-applied here.
+
+       --z  : zoom.        1 = fit  ·  1.3 = zoom in 30%  ·  1.8 = closer
+       --x  : left/right.  0% = centred  ·  negative = show more of the right
+       --y  : up/down.     0% = centred  ·  negative = show more of the bottom
+
+   (Circle size is set per context in the stylesheet — small in the team list,
+    large on a profile page — so it is deliberately not overridden here.)
+   ============================================================================ */
+
+/* per-person framing */
+.person--miao .person__photo { --z: 1; --x: 0%; --y: 0%; }
+.person--yanting .person__photo { --z: 1; --x: 0%; --y: 0%; }
+.person--anderson .person__photo { --z: 1.125; --x: -6%; --y: -3%; }
+.person--sydney .person__photo { --z: 1; --x: 0%; --y: 0%; }
+.person--kelvin .person__photo { --z: 1; --x: 0%; --y: 0%; }

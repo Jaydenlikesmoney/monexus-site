@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://monexus.example/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://monexus.example/science.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/products.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/partners.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/team.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/investors.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/team-miao.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/team-yanting.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/team-anderson.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/team-sydney.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/team-kelvin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/product-periomag.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/product-glucocure.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monexus.example/product-hydrogel.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
