@@ -1258,6 +1258,18 @@ a.card:hover {
   #mx-frontierkit.fk-reveal .fk-tree path{stroke-dashoffset:0; transition:none;}
 }
 
+/* ---- hero eyebrow vs the "Pause motion" button ------------------------------------------
+   .fk-motion is absolutely positioned at top:16px/right:16px of .fk-hero, while the eyebrow is
+   the first child of the overlay and sits in exactly the same vertical band (measured: 18px of
+   overlap at 375px, i.e. the eyebrow's full height). The headline below already clears the
+   button by 3px, so ONLY the eyebrow needs constraining.
+   Reserve the button's footprint (114px wide + 16px offset) so the text wraps before reaching
+   it instead of running underneath. Geometry: overlap only occurs while the hero is narrower
+   than ~364px, so above that this cap is wider than the text and does nothing. */
+@media (max-width:520px){
+  #mx-frontierkit .fk-eyebrow{max-width:calc(100% - 124px);}
+}
+
 /* f:mx-evidence-timeline */
 #mx-evidence-timeline{
   --paper:#FFFFFF; --surface:#FFFFFF; --surface-2:#F1F6F3;
