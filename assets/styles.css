@@ -2512,9 +2512,26 @@ img, svg, video, canvas{ max-width:100%; height:auto; }
 /* eyebrow-family tracking: match the investor labels to the .eyebrow treatment */
 .investor-item__label{letter-spacing:.14em;}
 /* touch targets: floor interactive controls to 44px on touch/coarse pointers (no desktop change) */
+/* ---- touch-target floor, site-wide -------------------------------------------------------
+   From a full audit of every <a>/<button>/<input>/[role=tab] across all six tabs AND the hidden
+   product/profile deep-dive views. Only three selectors had cover before; these were measured
+   under 44px on a phone with no rule protecting them:
+     .nav__burger 42px  — the mobile menu button, the single most-tapped control on the site
+     .nav__brand  29px  — the logo, which is also the "home" link
+     .tm-row__cta 25px  — "View Profile →", the only route into all five bios
+     .pf__back    21px  — "← Back", the only route out of a deep-dive view
+     footer nav   20px  — eight standalone links in list items
+     contact mail 20px  — the primary contact action in the contact card
+   Not included, deliberately: .pf__sources citation links. Those are reference links sitting in
+   a run of text and constrained by its line-height — the WCAG 2.5.8 inline exception — and
+   padding them to 44px each would blow the sources block apart. */
 @media(pointer:coarse){
   .plf__pill,.plf__reset{min-height:44px;}
   .person__link{min-height:44px;display:inline-flex;align-items:center;}
+  .nav__burger{min-height:44px;min-width:44px;}
+  .nav__brand{min-height:44px;}
+  .tm-row__cta,.pf__back{min-height:44px;display:inline-flex;align-items:center;}
+  .footer-col__list a,.contact-card a[href^="mailto:"]{min-height:44px;display:inline-flex;align-items:center;}
 }
 /* focus-visible rings for keyboard users (mouse clicks unaffected) */
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{
