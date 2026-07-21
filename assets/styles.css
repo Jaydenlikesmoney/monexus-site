@@ -2377,9 +2377,35 @@ img, svg, video, canvas{ max-width:100%; height:auto; }
 .pl__area{font-size:.85rem;color:var(--muted);display:block;margin-top:.15rem;}
 .pl__track-wrap{flex:1 1 15rem;min-width:11rem;}
 .pl__track{display:flex;align-items:center;gap:2px;}
-.pl__seg{flex:1;height:7px;background:var(--surface-2);border:1px solid var(--line);border-radius:2px;}
-.pl__seg--done{background:color-mix(in srgb,var(--accent) 55%,var(--surface));border-color:transparent;}
-.pl__seg--cur{background:var(--accent);border-color:transparent;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent);}
+/* The track is an empty channel; colour is supplied by an inner .pl__fill that grows in width.
+   Segments fill in sequence (nth-child delays below) so the colour reads as one stream running
+   along the track and stopping at the current stage. A second, infinite animation pans the
+   gradient to suggest continuing flow. */
+.pl__seg{flex:1;height:7px;background:var(--surface-2);border:1px solid var(--line);border-radius:2px;
+  position:relative;overflow:hidden;}
+.pl__seg--done,.pl__seg--cur{border-color:transparent;}
+.pl__seg--cur{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent);}
+.pl__fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:inherit;
+  background-size:200% 100%;
+  animation:pl-fill .55s cubic-bezier(.33,.9,.35,1) forwards, pl-stream 3.2s linear infinite;}
+.pl__seg--done .pl__fill{background-image:linear-gradient(90deg,
+  color-mix(in srgb,var(--accent) 42%,var(--surface)) 0%,
+  color-mix(in srgb,var(--accent) 68%,var(--surface)) 35%,
+  color-mix(in srgb,var(--accent) 42%,var(--surface)) 70%,
+  color-mix(in srgb,var(--accent) 68%,var(--surface)) 100%);}
+.pl__seg--cur .pl__fill{background-image:linear-gradient(90deg,
+  var(--accent) 0%, color-mix(in srgb,var(--accent) 62%,#fff) 35%,
+  var(--accent) 70%, color-mix(in srgb,var(--accent) 62%,#fff) 100%);}
+@keyframes pl-fill{from{width:0} to{width:100%}}
+@keyframes pl-stream{from{background-position:0 0} to{background-position:-200% 0}}
+/* stagger: each segment starts only once the previous has filled */
+.pl__track .pl__seg:nth-child(1) .pl__fill{animation-delay:0s,0s;}
+.pl__track .pl__seg:nth-child(2) .pl__fill{animation-delay:.30s,0s;}
+.pl__track .pl__seg:nth-child(3) .pl__fill{animation-delay:.60s,0s;}
+.pl__track .pl__seg:nth-child(4) .pl__fill{animation-delay:.90s,0s;}
+@media(prefers-reduced-motion:reduce){
+  .pl__fill{animation:none;width:100%;}
+}
 .pl__stagelabels{display:flex;justify-content:space-between;margin-top:.45rem;font-size:.58rem;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);}
 .pl__stagelabels .pl__sl--cur{color:var(--accent-deep);font-weight:700;}
 .pl__chev{flex:none;margin-left:auto;width:1.4rem;height:1.4rem;color:var(--muted);transition:transform .22s ease,color .15s ease;}
