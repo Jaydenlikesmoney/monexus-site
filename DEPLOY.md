@@ -2,10 +2,14 @@
 
 This folder IS the website root. Everything is static — no build step on the server.
 
-## 0. Before anything goes live
-Open `build_site.py` and set `SITE_URL` to the real address, then re-run it.
-While it is `https://monexus.example` the build prints a warning, and the
-canonical tags / sitemap point at a domain nobody owns (bad for search ranking).
+## 0. State right now: NO DOMAIN SET (deliberate)
+`SITE_URL` in `build_site.py` is still `https://monexus.example`, so the build
+DISABLES every absolute-URL SEO tag: no canonical, no og:url, no JSON-LD, no
+sitemap.xml. This is the safe state — a canonical pointing at a domain you don't
+own hurts ranking more than having none. The site builds and works normally.
+
+To switch it all on later: set `SITE_URL` to the real domain, re-run the build,
+commit, push. Nothing else needs changing.
 
 ## 1. Publish to GitHub Pages
     gh auth login                        # one time
