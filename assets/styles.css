@@ -1270,6 +1270,15 @@ a.card:hover {
   #mx-frontierkit .fk-eyebrow{max-width:calc(100% - 124px);}
 }
 
+/* Touch-target floor for the motion toggle, matching the .plf__pill/.plf__reset pattern used
+   elsewhere. Only on coarse pointers, so the desktop control keeps its compact 37px height.
+   Checked before applying: at 44px the button's bottom edge lands at 902px while the headline
+   starts at 916px, so it does NOT push into the hero copy (the eyebrow now wraps to two lines,
+   which moved the headline down and created the room). */
+@media (pointer: coarse){
+  #mx-frontierkit .fk-motion{min-height:44px;}
+}
+
 /* f:mx-evidence-timeline */
 #mx-evidence-timeline{
   --paper:#FFFFFF; --surface:#FFFFFF; --surface-2:#F1F6F3;
